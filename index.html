@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b18"><meta name="description" content="A personal Muslim life, routine, trading and money dashboard.">
+  <title>Barakah — Muslim Life & Wealth</title>
+  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">ب</span><span><strong>BARAKAH</strong><small>Faith · Focus · Finance</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="nav">
+      <button class="nav-link active" data-view="dashboard"><span>◈</span> Overview</button>
+      <button class="nav-link" data-view="faith"><span>☾</span> Salah & worship</button>
+      <button class="nav-link" data-view="adhkar"><span>✧</span> Adhkar</button>
+      <button class="nav-link" data-view="routine"><span>⌁</span> Morning routine</button>
+      <button class="nav-link" data-view="trading"><span>↗</span> Muslim trading</button>
+      <button class="nav-link" data-view="money"><span>₦</span> Money tracker</button>
+      <button class="nav-link" data-view="journal"><span>▤</span> Daily journal</button>
+      <button class="nav-link" data-view="history"><span>◷</span> History & backup</button>
+    </nav>
+    <div class="sidebar-bottom"><span class="live-dot"></span> Private on this device</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow" id="todayLabel">YOUR PERSONAL SPACE</p><h1 id="pageTitle">Overview</h1></div><div class="top-actions"><input type="date" id="selectedDate" aria-label="Select date"><button class="icon-btn" id="exportBtn" title="Export backup">↓</button></div></header>
+
+    <section class="view active" id="dashboardView">
+      <div class="hero"><div><p class="eyebrow light">BISMILLAH — MAKE TODAY COUNT</p><h2>Build a life of <em>Barakah.</em></h2><p>Strengthen your faith, sharpen your discipline and manage your wealth with purpose.</p><div class="hero-meta"><span>☾ Faith first</span><span>✦ Consistency always</span></div></div><div class="hero-date"><small id="welcomeDay">TODAY</small><strong id="welcomeDate">01</strong><small id="welcomeMonth">MONTH</small></div></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon">☾</span><p>Prayer progress</p><strong id="dashPrayer">0/5</strong><small id="dashPrayerSub">Daily salah checklist</small></article>
+        <article class="stat-card"><span class="stat-icon">✧</span><p>Daily worship</p><strong id="dashWorship">0%</strong><small>Adhkar & Quran</small></article>
+        <article class="stat-card"><span class="stat-icon">↗</span><p>Trading P/L</p><strong id="dashPL">₦0.00</strong><small>Selected date</small></article>
+        <article class="stat-card"><span class="stat-icon">₦</span><p>Net worth tracker</p><strong id="dashBalance">₦0.00</strong><small>Income less expenses</small></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">TODAY'S DEEN</p><h3>Prayer check-in</h3></div><button class="text-btn" data-goto="faith">Open worship →</button></div><div id="dashPrayerList" class="check-list"></div></article>
+        <article class="panel verse-panel"><p class="eyebrow">A DAILY REMINDER</p><div class="arabic">إِنَّ مَعَ الْعُسْرِ يُسْرًا</div><h3>Indeed, with hardship comes ease.</h3><p>Qur’an 94:6</p><small>Pause. Remember Allah. Keep moving with ihsan.</small></article>
+      </div>
+      <div class="quick-grid">
+        <button class="quick-card" data-goto="adhkar"><b>✧</b><span><strong>Morning & evening adhkar</strong><small>Keep your remembrance close</small></span><i>→</i></button>
+        <button class="quick-card" data-goto="routine"><b>⌁</b><span><strong>Start morning routine</strong><small>Move your body with intention</small></span><i>→</i></button>
+        <button class="quick-card" data-goto="money"><b>₦</b><span><strong>Record money activity</strong><small>Know where your money goes</small></span><i>→</i></button>
+      </div>
+    </section>
+
+    <section class="view" id="faithView">
+      <div class="section-intro"><div><p class="eyebrow">YOUR CONNECTION WITH ALLAH</p><h2>Salah & worship</h2><p>Mark each act when you complete it. Prayer times are not calculated here.</p></div></div>
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">THE FIVE DAILY PRAYERS</p><h3>Daily salah checklist</h3></div><span class="tag">Fard</span></div><div id="prayerList" class="prayer-grid"></div></article>
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">OPTIONAL WORSHIP</p><h3>Extra acts of worship</h3></div></div><div id="extraFaithList" class="check-list"></div></article>
+      <p class="note">Use this as a personal record, not as a religious ruling. Make up missed prayers according to guidance from a trusted scholar.</p>
+    </section>
+
+    <section class="view" id="adhkarView">
+      <div class="section-intro"><div><p class="eyebrow">REMEMBERANCE OF ALLAH</p><h2>Adhkar & Quran</h2><p>Track your morning and evening remembrance and Quran time.</p></div></div>
+      <div class="two-col">
+        <article class="panel"><p class="eyebrow">AFTER FAJR / MORNING</p><h3>Morning adhkar</h3><p class="muted">A personal completion checklist. Follow your trusted adhkar source for wording and counts.</p><div id="morningList" class="check-list"></div></article>
+        <article class="panel"><p class="eyebrow">AFTER ASR / EVENING</p><h3>Evening adhkar</h3><p class="muted">A personal completion checklist. Follow your trusted adhkar source for wording and counts.</p><div id="eveningList" class="check-list"></div></article>
+      </div>
+      <article class="panel"><p class="eyebrow">QURAN CONNECTION</p><h3>Quran reading & revision</h3><div class="form-grid compact"><label>Pages read<input id="quranPages" type="number" min="0" placeholder="e.g. 4"></label><label>Minutes spent<input id="quranMinutes" type="number" min="0" placeholder="e.g. 20"></label><label class="full">Surah / ayah / reflection<textarea id="quranNote" rows="2" placeholder="What did you read or reflect on?"></textarea></label></div><button class="primary-btn" id="saveQuran">Save Quran log</button></article>
+    </section>
+
+    <section class="view" id="routineView">
+      <div class="section-intro"><div><p class="eyebrow">ENERGY WITH INTENTION</p><h2>Morning routine</h2><p>A practical routine you can adjust to your schedule and ability.</p></div><button class="primary-btn" id="resetRoutine">Reset checklist</button></div>
+      <article class="panel routine-banner"><div><p class="eyebrow">SUGGESTED FLOW</p><h3>Start gently. Stay consistent.</h3><p>Prioritise Fajr and rest. Exercise safely, hydrate and adapt the routine to your health and circumstances.</p></div><div class="routine-time">30–45 <small>MINUTES</small></div></article>
+      <div id="routineList" class="routine-grid"></div>
+      <article class="panel"><p class="eyebrow">YOUR WORKOUT NOTES</p><h3>Movement log</h3><div class="form-grid compact"><label>Workout type<input id="workoutType" placeholder="Walk, bodyweight, mobility..."></label><label>Duration (minutes)<input id="workoutDuration" type="number" min="0" placeholder="20"></label><label class="full">Notes<textarea id="workoutNote" rows="2" placeholder="How did it feel?"></textarea></label></div><button class="primary-btn" id="saveWorkout">Save workout</button><p class="muted" id="workoutSaved"></p></article>
+    </section>
+
+    <section class="view" id="tradingView">
+      <div class="section-intro"><div><p class="eyebrow">PROCESS, ETHICS & RISK</p><h2>Muslim trading journal</h2><p>Track decisions and review whether your approach aligns with your values.</p></div><button class="primary-btn" id="addTradeBtn">＋ Log trade</button></div>
+      <div class="stats-grid"><article class="stat-card"><p>Trades today</p><strong id="tradeCount">0</strong><small>Closed trades</small></article><article class="stat-card"><p>Win rate</p><strong id="tradeWinRate">0%</strong><small id="tradeRecord">0 wins · 0 losses</small></article><article class="stat-card"><p>Net P/L</p><strong id="tradeNet">₦0.00</strong><small>NGN</small></article><article class="stat-card"><p>Plan followed</p><strong id="tradeDiscipline">0%</strong><small>Trading discipline</small></article></div>
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">TRADE LOG</p><h3>Selected day's trades</h3></div><span class="muted" id="tradeDateLabel"></span></div><div id="tradeList" class="trade-list"></div></article>
+      <article class="panel ethics"><p class="eyebrow">ISLAMIC FINANCE SELF-REVIEW</p><h3>Before I trade, have I checked…</h3><p class="muted">This is an educational reflection checklist, not a halal certification or fatwa. Product structures and scholarly views differ.</p><div id="ethicsList" class="check-list"></div><label class="field-label">Questions to ask a qualified scholar<textarea id="ethicsNote" rows="2" placeholder="Write down instruments or contract details you need to verify..."></textarea></label><button class="secondary-btn" id="saveEthics">Save reflection</button></article>
+      <p class="note">Avoid assuming that a broker, instrument or strategy is Sharia-compliant based on this checklist. Review interest, leverage, short-selling, ownership, uncertainty and the underlying asset with a qualified Islamic finance scholar.</p>
+    </section>
+
+    <section class="view" id="moneyView">
+      <div class="section-intro"><div><p class="eyebrow">BE INTENTIONAL WITH YOUR AMANAH</p><h2>Money tracker</h2><p>Personal income, spending and savings — displayed in Nigerian Naira.</p></div><button class="primary-btn" id="addMoneyBtn">＋ Add transaction</button></div>
+      <div class="stats-grid"><article class="stat-card"><p>Total income</p><strong id="moneyIncome">₦0.00</strong><small>All recorded income</small></article><article class="stat-card"><p>Total expenses</p><strong id="moneyExpense">₦0.00</strong><small>All recorded spending</small></article><article class="stat-card"><p>Net balance</p><strong id="moneyBalance">₦0.00</strong><small>Income minus expenses</small></article><article class="stat-card"><p>Transactions</p><strong id="moneyCount">0</strong><small>All records</small></article></div>
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">CASH FLOW</p><h3>Transactions</h3></div><span class="muted">Newest first</span></div><div id="moneyList" class="money-list"></div></article>
+      <article class="panel"><p class="eyebrow">SPENDING PLAN</p><h3>Monthly budget</h3><div class="budget-row"><label>Monthly spending limit (₦)<input id="budgetLimit" type="number" min="0" step="100" placeholder="e.g. 150000"></label><button class="secondary-btn" id="saveBudget">Save budget</button></div><div class="progress-track"><div id="budgetProgress" class="progress-fill"></div></div><p id="budgetStatus" class="muted">Set a budget to track spending.</p></article>
+    </section>
+
+    <section class="view" id="journalView">
+      <div class="section-intro"><div><p class="eyebrow">REFLECT WITH PURPOSE</p><h2>Daily journal</h2><p>Record your intentions, progress and lessons.</p></div></div>
+      <form id="journalForm" class="panel"><div class="form-grid"><label class="full">Top priorities<textarea id="jGoals" rows="3"></textarea></label><label>Wake-up time<input id="jWake" type="time"></label><label>Bedtime target<input id="jBed" type="time"></label><label class="full">What did I accomplish?<textarea id="jWins" rows="3"></textarea></label><label class="full">What could I improve?<textarea id="jImprove" rows="3"></textarea></label><label class="full">Mood<select id="jMood"><option value="">Choose</option><option>Focused</option><option>Calm</option><option>Motivated</option><option>Tired</option><option>Stressed</option></select></label><label class="full">Lesson of the day<textarea id="jLesson" rows="2"></textarea></label><label class="full">Tomorrow's first action<textarea id="jTomorrow" rows="2"></textarea></label></div><div class="save-row"><span id="journalSaveStatus">Saved on this device.</span><button class="primary-btn" type="submit">Save journal</button></div></form>
+    </section>
+
+    <section class="view" id="historyView">
+      <div class="section-intro"><div><p class="eyebrow">YOUR RECORDS, YOUR CONTROL</p><h2>History & backup</h2><p>Export your data regularly. It is not stored in GitHub Pages.</p></div><button class="primary-btn" id="exportBtn2">Export JSON</button></div>
+      <article class="panel"><div class="panel-heading"><h3>Saved days</h3><span class="muted">Newest first</span></div><div id="historyList" class="history-list"></div></article>
+      <article class="panel backup-panel"><div><h3>Backup or restore</h3><p>Export a JSON file and keep it somewhere safe. Importing replaces the data currently stored in this browser.</p></div><div class="backup-actions"><button class="secondary-btn" id="exportBtn3">Export backup</button><label class="secondary-btn file-label">Import backup<input type="file" id="importFile" accept=".json,application/json" hidden></label></div></article>
+      <article class="panel"><h3>Use on your phone</h3><p class="muted">After publishing with GitHub Pages, open the website on your phone and choose “Add to Home Screen” (iPhone Safari) or “Install app” / “Add to Home screen” (Android Chrome). Each device has its own local data unless you manually move a backup.</p></article>
+    </section>
+    <footer>BARAKAH <span>·</span> Faith first. Live with purpose.</footer>
+  </main>
+</div>
+
+<dialog id="tradeDialog"><form method="dialog" id="tradeForm" class="modal-form"><div class="modal-head"><div><p class="eyebrow">RECORD THE FACTS</p><h3>Log a trade</h3></div><button class="close-btn" value="cancel">×</button></div><div class="form-grid"><label>Pair / instrument<input id="tPair" required placeholder="e.g. EURUSD"></label><label>Direction<select id="tDirection"><option>Buy</option><option>Sell</option></select></label><label>Result<select id="tResult"><option value="win">Win</option><option value="loss">Loss</option><option value="breakeven">Breakeven</option></select></label><label>Net P/L (₦)<input id="tPL" type="number" step="0.01" required value="0"></label><label>Risk amount (₦)<input id="tRisk" type="number" min="0" step="0.01"></label><label>Session<select id="tSession"><option>London</option><option>New York</option><option>Asia</option><option>Other</option></select></label><label>Followed my plan?<select id="tFollowed"><option value="yes">Yes</option><option value="no">No</option></select></label><label>Entry price<input id="tEntry"></label><label>Stop loss<input id="tSL"></label><label>Take profit<input id="tTP"></label><label class="full">Emotion / lesson<textarea id="tLesson" rows="2"></textarea></label></div><div class="modal-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="primary-btn" id="saveTrade" value="default">Save trade</button></div></form></dialog>
+<dialog id="moneyDialog"><form method="dialog" id="moneyForm" class="modal-form"><div class="modal-head"><div><p class="eyebrow">PERSONAL FINANCE</p><h3>Add transaction</h3></div><button class="close-btn" value="cancel">×</button></div><div class="form-grid"><label>Type<select id="mType"><option value="income">Income</option><option value="expense">Expense</option></select></label><label>Amount (₦)<input id="mAmount" type="number" min="0.01" step="0.01" required></label><label>Category<select id="mCategory"><option>Salary</option><option>Business</option><option>Trading</option><option>Food</option><option>Transport</option><option>Bills</option><option>Family</option><option>Giving / sadaqah</option><option>Savings</option><option>Education</option><option>Other</option></select></label><label>Date<input id="mDate" type="date" required></label><label class="full">Description<input id="mDescription" placeholder="What was this for?"></label></div><div class="modal-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="primary-btn" id="saveMoney" value="default">Save transaction</button></div></form></dialog>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script><script>if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
+</body></html>
